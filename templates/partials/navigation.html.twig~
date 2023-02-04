@@ -1,20 +1,19 @@
 {% macro loop(page) %}
     {% for p in page.children.visible %}
-        {% set current_page = (p.active or p.activeChild) ? 'border-b-2 border-purple-500' : '' %}
-        
+        {% set current_page = (p.active or p.activeChild) ? 'selected' : '' %}
         {% if p.children.visible.count > 0 %}
-            <li class=" " tabindex="0">
-                <a href="{{ p.url|e }}" class="{{ current_page|e }} ">
-                   {% if p.header.icon %}<i class="fa fa-{{ p.header.icon|e }}"></i>{% endif %}
+            <li class="has-children {{ current_page|e }}">
+                <a href="{{ p.url|e }}">
+                    {% if p.header.icon %}<i class="fa fa-{{ p.header.icon|e }}"></i>{% endif %}
                     {{ p.menu|e }}
                 </a>
-                <ul class="rounded-lg p-2 bg-white shadow-lg">
+                <ul>
                     {{ _self.loop(p) }}
                 </ul>
             </li>
         {% else %}
-            <li class=" ">
-                <a href="{{ p.url|e }}" class="{{ current_page|e }} ">
+            <li class="{{ current_page|e }}">
+                <a href="{{ p.url|e }}">
                     {% if p.header.icon %}<i class="fa fa-{{ p.header.icon|e }}"></i>{% endif %}
                     {{ p.menu|e }}
                 </a>
@@ -23,15 +22,14 @@
     {% endfor %}
 {% endmacro %}
 
-<ul class="menu menu-horizontal p-0 dropdown-content text-xl hidden">
+<ul>
     {% if config.theme.dropdown.enabled %}
         {{ _self.loop(pages) }}
     {% else %}
-    
         {% for page in pages.children.visible %}
-            {% set current_page = (page.active or page.activeChild) ? '' : '' %}
+            {% set current_page = (page.active or page.activeChild) ? 'selected' : '' %}
             <li class="{{ current_page|e }}">
-                <a href="{{ page.url|e }}" class="rounded">
+                <a href="{{ page.url|e }}">
                     {% if page.header.icon %}<i class="fa fa-{{ page.header.icon|e }}"></i>{% endif %}
                     {{ page.menu|e }}
                 </a>
@@ -46,5 +44,4 @@
             </a>
         </li>
     {% endfor %}
-   
 </ul>

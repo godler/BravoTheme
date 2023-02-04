@@ -1,0 +1,57 @@
+{% set grid_size = theme_var('grid-size') %}
+{% set hero_image = page.header.hero_image ? page.media[page.header.hero_image] : page.media.images|first %}
+
+
+<div id="{{ id }}" class="hero relative min-h-screen bg-base-200  -mb-32 pb-32 {{ page.header.hero_classes }} {{ page.header.hero_paralax ? 'parallax' : '' }}" {% if hero_image %} style="background-image: url('{{ hero_image.url }}');" {% endif %}>
+	<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-cyan-500 to-blue-500 opacity-50 "></div>
+	<div class="container md:flex mx-auto justify-between p-5 md:p-20 mt-20 ">
+
+		<div class="max-w-xl text-white relative  ">
+			<h1 class="text-5xl font-bold">
+				{{ page.title }}</h1>
+			<div class="py-6 text-2xl text-justify">{{ content|raw }}</div>
+
+		</div>
+
+		<div>
+			<div class="card md:w-96 bg-base-100 shadow-xl">
+				<div class="card-body">
+					<h2 class="card-title">Zrób ściany razem z nami!</h2>
+					<p>Chcesz poznać wycenę? <br>Zadzwoń <b>+661 303 090</b> lub wypełnij formularz a skontaktujemy się z tobą.</p>
+					<div class="form-control w-full max-w-xs">
+						{# <label class="label">
+							<span class="label-text text-xs">Email*</span>
+						</label> #}
+						<input type="text" placeholder="Email" class="input input-bordered w-full max-w-xs"/>
+					</div>
+					<div class="form-control w-full max-w-xs">
+						{# <label class="label">
+							<span class="label-text text-xs">Telefon</span>
+						</label> #}
+						<input type="text" placeholder="Telefon" class="input input-bordered w-full max-w-xs"/>
+					</div>
+					<div class="form-control w-full max-w-xs">
+						{# <label class="label">
+							<span class="label-text text-xs">Miejscowość</span>
+						</label> #}
+						<input type="text" placeholder="Miejscowość" class="input input-bordered w-full max-w-xs"/>
+					</div>
+					{# <select type="text" class="select select-bordered ">
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+						<option value="2">Option 2</option>
+					</select> #}
+					<textarea class="textarea textarea-bordered" placeholder="Dodatkowe informacje"></textarea>
+					<div class="card-actions ">
+						<button class="btn w-full btn-primary">Wyślij
+							<span class="ml-3">
+								<i class="ti ti-send"></i>
+							</span>
+						</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

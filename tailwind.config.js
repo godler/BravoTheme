@@ -7,6 +7,7 @@ module.exports = {
     './blueprints/**/*.yaml',
     './js/**/*.js',
     './templates/**/*.twig',
+    './templates/**/*.html.twig',
     './bravo.yaml',
     './bravo.php'
   ],
@@ -64,7 +65,8 @@ module.exports = {
   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
-    require('tailwindcss-debug-screens')
+    require('tailwindcss-debug-screens'),
+    require("daisyui"),
   ],
   important: false,
 }

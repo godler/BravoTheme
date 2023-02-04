@@ -1,68 +1,86 @@
-{% set extension = config.theme.production ? '.min' : '' %}
 <!DOCTYPE html>
-<html lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}">
-<head>
-    {% block head %}
-        <meta charset="utf-8" />
-        <title>{% if header.title %}{{ header.title|e }} | {% endif %}{{ site.title|e }}</title>
+<html lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}" data-theme="light">
+	<head>
+		{% block head %}
+			<meta charset="utf-8"/>
+			<title>
+				{% if header.title %}
+					{{ header.title | e }}
+					|
+				{% endif %}
+				{{ site.title | e }}
+			</title>
 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% include 'partials/metadata.html.twig' %}
+			<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-        <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png')|e }}" />
-        <link rel="canonical" href="{{ page.url(true, true)|e }}" />
-    {% endblock head %}
+			<link rel="stylesheet" href=""/>
+			<link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="https://fonts.googleapis.com/css2?family=Domine">
+			<link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
+			{% include 'partials/metadata.html.twig' %}
 
-    {% block stylesheets %}
-        {% do assets.addCss('theme://dist/css/site' ~ extension ~ '.css', 98) %}
-    {% endblock %}
+			<link rel="icon" type="image/png" href="{{ url('theme://images/logo.png') | e }}"/>
+			<link rel="canonical" href="{{ page.canonical(true) | e }}"/>
+		{% endblock head %}
 
-    {% block javascripts %}
-	    {% do assets.addJs('theme://dist/js/main' ~ extension ~ '.js', 98) %}
-    {% endblock %}
 
-    {% block assets deferred %}
-    {{ assets.css()|raw }}
-    {{ assets.js()|raw }}
-    {% endblock %}
-</head>
-<body id="top" class="{{ page.header.body_classes|e }} {{ config.theme.production ?: 'debug-screens' }}">
+		{% block stylesheets %}
+			{% do assets.addCss('theme://dist/css/styles' ~ extension ~ '.css', 98) %}
+		{% endblock %}
+		{% block javascripts %}
+			{% do assets.addJs('theme://dist/js/main' ~ extension ~ '.js', 98) %}
+		{% endblock %}
+		{% block assets deferred %}
 
-{% block header %}
-    <div class="header">
-        <div class="">
-            <a class="logo" href="{{ home_url|e }}">
-                {{ config.site.title|e }}
-            </a>
-            {% block header_navigation %}
-                <nav class="main-nav">
-                    {% include 'partials/navigation.html.twig' %}
-                </nav>
-            {% endblock %}
-        </div>
-    </div>
-{% endblock %}
+			<script src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js" defer></script>
 
-{% block body %}
-    <section id="body">
-        <div class="prose">
-            {% block content %}{% endblock %}
-        </div>
-    </section>
-{% endblock %}
+			{{
+                assets.css() | raw
+            }}
+			{{
+             assets.js() | raw
+            }}
+		{% endblock %}
+	</head>
 
-{% block footer %}
-    <div class="footer text-center">
-        <div class="">
-            <p><a href="http://getgrav.org">Grav</a>, by <a href="http://www.rockettheme.com">RocketTheme</a>.</p>
-        </div>
-    </div>
-{% endblock %}
+	<body id="top" class="{{ page.header.body_classes | e }} ">
 
-{% block bottom %}
-    {{ assets.js('bottom')|raw }}
-{% endblock %}
+		<div class="{{page.header.menu_position ? 'absolute top-0 left-0 w-full z-10 text-white ' : 'text-gray-600'}}">
+			<div class="container mx-auto  my-3   ">
+				<div class="navbar items-center gap-5">
 
-</body>
+					<h1 class="flex-1">
+						<a href="{{ home_url|e }}" class="btn btn-ghost normal-case text-3xl">{{  config.site.title|e  }}</a>
+					</h1>
+
+					<div class="flex-none">
+						{% block header_navigation %}
+							<nav class="main-nav">
+								{% include 'partials/navigation.html.twig' %}
+							</nav>
+						{% endblock %}
+					</div>
+					<div class="bg-green-500 rounded-lg shadow border-0 text-2xl font-bold p-2 ">
+						<a href="tel:{{site.phone}}">
+							<i class="ti ti-phone"></i>
+							{{site.phone}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		{% block body %}
+			<section class="container mx-auto p-4">
+				{{ page.content | raw }}
+			</section>
+		{% endblock %}
+		{% block footer %}
+			{% include
+        '/partials/footer.html.twig' %}
+		{% endblock %}
+		{% block bottom %}
+			{{ assets.js("bottom") | raw }}
+		{% endblock %}
+	</body>
 </html>

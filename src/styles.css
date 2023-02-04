@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+  scroll-behavior: smooth;
+}
+
+.parallax {
+    /* The image used */
+
+  
+    /* Set a specific height */
+    min-height: 500px;
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Domine, sans;
+  }
+
+  ol{
+    list-style: decimal
+  }
+  ol li {
+    padding-bottom:1rem;
+    margin-left: 2rem
+  }
+
+  ol li::marker {
+    content: "💡"
+  }

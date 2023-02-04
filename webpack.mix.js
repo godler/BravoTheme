@@ -3,9 +3,10 @@ require('mix-tailwindcss');
 
 const extension = mix.inProduction() ? '.min' : '';
 
-mix.js('js/main.js', `js/main${extension}.js`)
-    .css('css/site.css', `css/site${extension}.css`)
-    .tailwind()
+mix.js('src/app.js', `js/main${extension}.js`)
+    // .postCss('src/styles.css', `css/styles${extension}.css`)
+    .postCss("src/styles.css", "css", [require("tailwindcss")])
+    // .tailwind()
     .setPublicPath('dist')
     .version()
     // .browserSync({

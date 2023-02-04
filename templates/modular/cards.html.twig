@@ -1,0 +1,26 @@
+{% set cards = page.header.cards %}
+
+<div class="py-10 md:py-20 container mx-auto ">
+	<div>
+		<h2 class="text-4xl text-center mb-10 font-semibold">{{page.title}}</h2>
+	</div>
+	<div class=" md:flex md:justify-center gap-10 mx-auto p-10">
+		{% for card in cards %}
+			<div class="card w-full md:w-96 bg-base-100 shadow-xl mx-auto mb-10 md:mb-0">
+				<figure><img src="{{ page.media[card.image].cropZoom(400,200).url }}" class="w-full" alt="{{card.title}}"/></figure>
+				<div class="card-body text-center">
+					<h2 class="card-title text-center w-full block">{{card.title}}</h2>
+                    {% if card.text %}
+					<p >{{card.text|raw}}</p>
+                    {% endif %}
+					<div class="card-actions justify-center mt-10">
+						{% if card.action_link %}
+						<a href="{{ card.action_link }}" class="btn btn-primary">{{ card.action_text }}</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+</div>
