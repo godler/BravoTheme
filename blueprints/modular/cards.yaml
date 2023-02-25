@@ -1,0 +1,42 @@
+title: Hero
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        buttons:
+          type: tab
+          title: Cards
+          fields:
+            header.show_title:
+                type: toggle
+                label: Show title
+                help: Show or hide title
+                highlight: 0
+                default: 1
+                options:
+                    1: PLUGIN_ADMIN.ENABLED
+                    0: PLUGIN_ADMIN.DISABLED
+            header.cards:
+              name: cards
+              type: list
+              label: Cards
+              fields:
+                .title:
+                  type: text
+                  label: Title
+                .text:
+                  type: textarea
+                  label: Text
+                .image:
+                  type: filepicker
+                  folder: 'self@'
+                  preview_images: true
+                  label: Select a file       
+                .action_text:
+                  type: text
+                  label: Action text
+                .action_link:
+                  type: text
+                  label: Action link

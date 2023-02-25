@@ -1,0 +1,76 @@
+title: Hero
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.subtitle:
+                type: text
+                label: Subtitle
+                markdown: false
+                description: ''
+        text:
+          type: tab
+          title: Text
+          fields:
+            header.action_link:
+              type: text
+              label: Action link
+              markdown: false
+              description: ''
+            header.action_text:
+              type: text
+              label: Action text
+              markdown: false
+              description: ''            
+            header.title_align:
+              type: select
+              size: long
+              classes: fancy
+              label: 'Align'
+              options:
+                  left: 'Left'
+                  center: 'Center'
+                  right: 'Right'
+            header.style:
+              type: select
+              size: long
+              classes: fancy
+              label: 'Style'
+              options:
+                  light: 'light'
+                  dark: 'dark'
+                  color: 'color'
+            header.bg_color:
+              type: colorpicker
+              label: Button background Color
+              markdown: true
+              description: color in HEX          
+              default: '#168B8A'
+            header.text_color:
+              type: colorpicker
+              label: Button text Color
+              markdown: true
+              description: color in HEX          
+              default: '#000000'
+            header.shadow:
+              type: toggle
+              label: Shadow
+              help: Show or hide shadow over text
+              highlight: 0
+              default: 0
+              options:
+                  1: PLUGIN_ADMIN.ENABLED
+                  0: PLUGIN_ADMIN.DISABLED
+            header.reverse:
+                type: toggle
+                label: Image position
+                help: Show or hide title
+                highlight: 1
+                default: 1
+                options:
+                    1: Left
+                    0: Right

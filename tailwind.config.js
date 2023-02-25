@@ -1,72 +1,71 @@
-const colors = require('tailwindcss/colors');
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: [
-    '../../config/**/*.yaml',
-    '../../pages/**/*.md',
-    './blueprints/**/*.yaml',
-    './js/**/*.js',
-    './templates/**/*.twig',
-    './templates/**/*.html.twig',
-    './bravo.yaml',
-    './bravo.php'
+    "../../config/**/*.yaml",
+    "../../pages/**/*.md",
+    "./blueprints/**/*.yaml",
+    "./js/**/*.js",
+    "./templates/**/*.twig",
+    "./templates/**/*.html.twig",
+    "./bravo.yaml",
+    "./bravo.php",
   ],
-  darkMode: 'class', //false or 'media' or 'class'
+  darkMode: "class", //false or 'media' or 'class'
   theme: {
     extend: {
       screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1536px'
-      }
-    },
-    colors: {
-      'primary': {
-        'lighter': colors.yellow['300'],
-        DEFAULT: colors.yellow['400'],
-        'darker' : colors.yellow['500'],
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1180px",
+        "2xl": "1280px",
       },
-      black: colors.black,
-      white: colors.white,
-      red: colors.red,
-      green: colors.green,
-      blue: colors.blue,
-      orange: colors.orange,
-      indigo: colors.indigo,
-      transparent: 'transparent',
-      'inherit': 'inherit',
+      colors: {
+        genoa: {
+          50: "#f1fcfb",
+          100: "#cff8f3",
+          200: "#9ff0e7",
+          300: "#68e0d8",
+          400: "#38c9c4",
+          500: "#1fadaa",
+          600: "#168b8a",
+          700: "#166e6f",
+          800: "#165859",
+          900: "#17484a",
+        },
+      },
     },
+
     typography: (theme) => ({
       DEFAULT: {
         css: {
-          color: 'inherit',
-          lineHeight: 'inherit',
-          maxWidth: 'inherit',
+          color: "inherit",
+          lineHeight: "inherit",
+          maxWidth: "inherit",
           a: {
-            transition: 'all 500ms',
-            color: theme('colors.primary.DEFAULT'),
-            '&:hover': {
-              color: theme('colors.primary.darker')
+            transition: "all 500ms",
+            color: theme("colors.primary.DEFAULT"),
+            "&:hover": {
+              color: theme("colors.primary.darker"),
             },
-            textDecoration: 'none'
+            textDecoration: "none",
           },
           strong: {
-            color: 'inherit'
+            color: "inherit",
           },
-        }
-      }
+        },
+      },
     }),
   },
   variants: {
     extend: {},
   },
   plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-    require('tailwindcss-debug-screens'),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+    require("tailwindcss-debug-screens"),
     require("daisyui"),
   ],
   important: false,
-}
+};

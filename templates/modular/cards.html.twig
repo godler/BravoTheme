@@ -1,13 +1,17 @@
 {% set cards = page.header.cards %}
 
-<div class="py-10 md:py-20 container mx-auto ">
+<div class="py-6 container mx-auto ">
+	{% if page.header.show_title %}
 	<div>
 		<h2 class="text-4xl text-center mb-10 font-semibold">{{page.title}}</h2>
 	</div>
-	<div class=" md:flex md:justify-center gap-10 mx-auto p-10">
+
+	{% endif %}
+
+	<div class=" md:flex md:justify-center gap-10 mx-auto p-10 border-b">
 		{% for card in cards %}
-			<div class="card w-full md:w-96 bg-base-100 shadow-xl mx-auto mb-10 md:mb-0">
-				<figure><img src="{{ page.media[card.image].cropZoom(400,200).url }}" class="w-full" alt="{{card.title}}"/></figure>
+			<div class="card w-full md:w-96 bg-base-100 border mx-auto mb-10 md:mb-0">
+				<figure><img src="{{ page.media[card.image].cropZoom(400,400).url }}" class="w-auto mx-auto h-[200px]" alt="{{card.title}}"/></figure>
 				<div class="card-body text-center">
 					<h2 class="card-title text-center w-full block">{{card.title}}</h2>
                     {% if card.text %}

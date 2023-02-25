@@ -1,31 +1,36 @@
 {% set image = page.header.hero_image ? page.media[page.header.hero_image] : page.media.images|first %}
 
 {% if page.header.style == 'color' %}
-	{% set style = 'bg-green-600 text-white' %}
+	{% set style = 'bg-green-600 text-white rounded-lg ' %}
 {% elseif page.header.style == 'dark' %}
-	{% set style = 'bg-gray-600 text-white' %}	
+	{% set style = 'bg-gray-600 text-white rounded-lg ' %}
 {% else %}
-	{% set style = ' text-gray-800' %}	
+	{% set style = ' text-gray-800' %}
 {% endif %}
 
 
-	<div class="relative text-justify">
-		<div class="container mx-auto md:px-16 {{ page.header.text_classes }} rounded-lg shadow-lg  {{style}}">
-			<div class="md:flex">
-				<div class="p-10 flex flex-col justify-between flex-1 prose ">
-					<h1 class="text-3xl font-semibold mb-5 text-{{page.header.title_align}}">{{page.title}}</h1>
-					<div class="text-lg">{{ content|raw }}</div>
-					{% if page.header.action_text %}
-						<a href="{{ page.header.action_link }}" class="btn btn-lg bg-blue-500 border-0 shadow rounded-xl mt-5">
-							{{page.header.action_text}}</a>
-					{% endif %}
-				</div>
-				{% if image %}
-					<div class="p-10 md:w-1/2 ">
-						<img src="{{image.url}}" class=" object-cover rounded-xl "/>
-					</div>
+<div class="relative text-justify">
+	<div class="container mx-auto md:px-16 {{ page.header.text_classes }} {{page.header.shadow ? 'shadow-lg' : 'border-b'}} {{style}}">
+		<div class="md:flex {{page.header.reverse ? 'flex-row-reverse' : ''}}">
+			<div class="p-10 flex flex-col justify-between flex-1 prose ">
+				<h1 class="text-3xl font-semibold mb-5 text-{{page.header.title_align}}">{{page.title}}</h1>
+				{% if page.header.subtitle %}
+					<h2 class="text-xl font-semibold mb-5 text-{{page.header.title_align}}">
+						{{page.header.subtitle}}
+					</h2>
+				{% endif %}
+				<div class="text-lg">{{ content|raw }}</div>
+				{% if page.header.action_text %}
+					<a href="{{ page.header.action_link }}" class="btn   border-0 shadow rounded-xl mt-5" style="background: {{page.header.bg_color}}; color: {{page.header.text_color}}">
+						{{page.header.action_text}}
+					</a>
 				{% endif %}
 			</div>
-
+			{% if image %}
+				<div class="p-10 md:w-1/2  text-center flex flex-col items-center min-h-full justify-center">
+					<img src="{{image.url}}" class=" object-cover rounded-xl  h-[400px] mx-auto"/>
+				</div>
+			{% endif %}
 		</div>
 	</div>
+</div>

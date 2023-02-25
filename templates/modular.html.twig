@@ -1,6 +1,6 @@
 {% extends 'partials/base.html.twig' %}
 
-{% set show_onpage_menu = true %}
+{% set show_onpage_menu = false %}
 
 
 {% block header_navigation %}
@@ -9,8 +9,9 @@
 		<ul class="navbar gap-5">
 			{% for module in page.collection() if module.header.visible is not same as(false) %}
 				{% set current_module = (module.active or module.activeChild) ? 'active' : '' %}
+				{% set href = module.header.redirect ? module.header.redirect :  "#"~module.menu|hyphenize %}
 				<li>
-					<a class="{{ current_module }}" href="#{{ module.menu|hyphenize }}">{{ module.menu }}</a>
+					<a class="{{ current_module }}" href="{{href}}">{{ module.menu }}</a>
 				</li>
 			{% endfor %}
 			{% for mitem in site.menu %}

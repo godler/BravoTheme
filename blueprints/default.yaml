@@ -1,0 +1,25 @@
+title: My Page Blueprint
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+          type: tab
+          fields:
+             header.menu_position:
+              type: toggle
+              label: Menu position
+              highlight: 0
+              default: 0
+              options:
+                  1: Absolute
+                  0: Relative
+              validate:
+                  type: bool
+              description: 

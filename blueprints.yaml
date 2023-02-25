@@ -30,7 +30,7 @@ form:
                 0: PLUGIN_ADMIN.DISABLED
             validate:
                 type: bool
-        production:
+        production.enabled:
             type: toggle
             label: Production Mode
             highlight: 1
@@ -40,3 +40,38 @@ form:
                 0: PLUGIN_ADMIN.DISABLED
             validate:
                 type: bool
+            header-dark:
+        header-dark:
+            type: toggle
+            label: Dark Style
+            help: When enabled, a dark-friendly style will be used
+            highlight: 0
+            default: 0
+            options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+            validate:
+                type: bool
+        bg_color:
+              type: colorpicker
+              label: Bacground Color
+              markdown: true
+              description: color in HEX
+        favicon_file:
+            name: favicon
+            type: file
+            label: Favicon
+            destination: 'theme://images'
+            multiple: false
+            autofocus: false
+            accept:
+                - image/*
+        logo:
+            name: favicon
+            type: file
+            label: Logo
+            destination: 'theme://images'
+            multiple: false
+            autofocus: false
+            accept:
+                - image/*

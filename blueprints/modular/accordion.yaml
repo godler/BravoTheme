@@ -1,0 +1,22 @@
+title: Hero
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        buttons:
+          type: tab
+          title: Accorions
+          fields:
+            header.accordions:
+              name: accorions
+              type: list
+              label: Accorions
+              fields:
+                .title:
+                  type: text
+                  label: Title
+                .content:
+                  type: textarea
+                  label: Text
