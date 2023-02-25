@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}" data-theme="light" style="background: {{ theme.bg_color | e }}">
 	<head>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-5TWE5SW094"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+function gtag() {
+dataLayer.push(arguments);
+}
+gtag('js', new Date());
+
+gtag('config', 'G-5TWE5SW094');
+		</script>
+
+
 		{% block head %}
 			<meta charset="utf-8"/>
 			<title>
