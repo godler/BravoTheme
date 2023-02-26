@@ -58,16 +58,16 @@ gtag('config', 'G-5TWE5SW094');
 
 	<body id="top" class="{{ page.header.body_classes | e }} m-5 bg-white shadow-xl rounded p-2 md:p-5 container mx-auto">
 
-		<div class="{{page.header.menu_position ? 'absolute top-0 left-0 w-full z-10 text-white ' : 'text-gray-600 mb-5'}}">
+		<div x-data="{ atTop: false }" class="{{page.header.menu_position ? 'absolute top-0 left-0 w-full z-10 text-white ' : 'text-gray-600 mb-5'}} " :class="{ 'shadow-lg fixed top-0 left-0 w-full bg-white z-10 p-2': atTop}" @scroll.window="atTop = (window.pageYOffset < 50) ? false: true">
 			<div class="container mx-auto     bg-white bg-opacity-10 rounded">
-				<div class="mb:flex items-center gap-5 p-0">
+				<div class="md:flex items-center gap-5 p-0 justify-between">
 
-					<h1 class="flex-1 text-center md:text-left">
+					<h1 class="text-center md:text-left md:flex items-center mb-5 md:mb-0 " :class="{'hidden': atTop}">
 						{% if config.theme.logo | first %}
-							<img src="{{config.theme.logo | first.path|e}}" alt="" class="h-16 mx-auto">
+							<img src="{{config.theme.logo | first.path|e}}" alt="" class="h-16 mx-auto mb-5 md:mb-0  md:mr-5 " :class="{' h-10':atTop}">
 						{% endif %}
 
-						<a href="{{ home_url|e }}" class="btn-sm md:btn btn-ghost normal-case text-3xl">{{  config.site.title|e  }}</a>
+						<a href="{{ home_url|e }}" class="normal-case  " :class="{'text-lg':atTop , 'text-3xl ml-5': !atTop}">{{  config.site.title|e  }}</a>
 					</h1>
 
 					<div class="flex-none">
@@ -77,8 +77,8 @@ gtag('config', 'G-5TWE5SW094');
 							</nav>
 						{% endblock %}
 					</div>
-					<div class="bg-genoa-600 py-1 mr-4 font-semibold px-5 text-2xl text-center rounded">
-						<a href="tel:{{site.phone}}" class="mx-auto text-white">
+					<div class="bg-genoa-600 py-1 font-semibold text-2xl text-center rounded" :class="{'':atTop}">
+						<a href="tel:{{site.phone}}" class="mx-auto text-white w-full p-2">
 							<i class="ti ti-phone"></i>
 							{{site.phone}}</a>
 					</div>
