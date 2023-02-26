@@ -3249,6 +3249,9 @@ html {
 .relative {
   position: relative;
 }
+.sticky {
+  position: sticky;
+}
 .top-0 {
   top: 0px;
 }
