@@ -1,16 +1,16 @@
 {% extends 'partials/base.html.twig' %}
 
-{% set show_onpage_menu = false %}
+{% set show_onpage_menu = true %}
 
 
 {% block header_navigation %}
 	{% if show_onpage_menu %}
 
-		<ul class="navbar gap-5">
+		<ul class="md:flex gap-5 p-5 md:p-0">
 			{% for module in page.collection() if module.header.visible is not same as(false) %}
 				{% set current_module = (module.active or module.activeChild) ? 'active' : '' %}
 				{% set href = module.header.redirect ? module.header.redirect :  "#"~module.menu|hyphenize %}
-				<li>
+				<li class="hover:bg-genoa-100">
 					<a class="{{ current_module }}" href="{{href}}">{{ module.menu }}</a>
 				</li>
 			{% endfor %}
