@@ -62,9 +62,9 @@ gtag('config', 'G-5TWE5SW094');
 			<div class="container mx-auto     bg-white bg-opacity-10 rounded">
 				<div class="mb:flex items-center gap-5 p-0">
 
-					<h1 class="flex-1">
+					<h1 class="flex-1 text-center md:text-left">
 						{% if config.theme.logo | first %}
-							<img src="{{config.theme.logo | first.path|e}}" alt="" class="h-16">
+							<img src="{{config.theme.logo | first.path|e}}" alt="" class="h-16 mx-auto">
 						{% endif %}
 
 						<a href="{{ home_url|e }}" class="btn-sm md:btn btn-ghost normal-case text-3xl">{{  config.site.title|e  }}</a>
