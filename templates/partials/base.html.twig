@@ -56,18 +56,18 @@ gtag('config', 'G-5TWE5SW094');
 		{% endblock %}
 	</head>
 
-	<body id="top" class="{{ page.header.body_classes | e }} m-5 bg-white shadow-xl rounded p-5 container mx-auto">
+	<body id="top" class="{{ page.header.body_classes | e }} m-5 bg-white shadow-xl rounded p-2 md:p-5 container mx-auto">
 
 		<div class="{{page.header.menu_position ? 'absolute top-0 left-0 w-full z-10 text-white ' : 'text-gray-600 mb-5'}}">
 			<div class="container mx-auto     bg-white bg-opacity-10 rounded">
-				<div class="navbar items-center gap-5 p-0">
+				<div class="mb:flex items-center gap-5 p-0">
 
 					<h1 class="flex-1">
 						{% if config.theme.logo | first %}
 							<img src="{{config.theme.logo | first.path|e}}" alt="" class="h-16">
 						{% endif %}
 
-						<a href="{{ home_url|e }}" class="btn btn-ghost normal-case text-3xl">{{  config.site.title|e  }}</a>
+						<a href="{{ home_url|e }}" class="btn-sm md:btn btn-ghost normal-case text-3xl">{{  config.site.title|e  }}</a>
 					</h1>
 
 					<div class="flex-none">
