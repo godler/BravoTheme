@@ -2,9 +2,9 @@
 
 <div class="py-6 container mx-auto ">
 	{% if page.header.show_title %}
-	<div>
-		<h2 class="text-4xl text-center mb-10 font-semibold">{{page.title}}</h2>
-	</div>
+		<div>
+			<h2 class="text-4xl text-center mb-10 font-semibold">{{page.title}}</h2>
+		</div>
 
 	{% endif %}
 
@@ -14,12 +14,12 @@
 				<figure><img src="{{ page.media[card.image].cropZoom(400,400).url }}" class="w-auto mx-auto h-[200px]" alt="{{card.title}}"/></figure>
 				<div class="card-body text-center">
 					<h2 class="card-title text-center w-full block">{{card.title}}</h2>
-                    {% if card.text %}
-					<p >{{card.text|raw}}</p>
-                    {% endif %}
+					{% if card.text %}
+						<p>{{card.text|raw}}</p>
+					{% endif %}
 					<div class="card-actions justify-center mt-10">
 						{% if card.action_link %}
-						<a href="{{ card.action_link }}" class="btn btn-primary">{{ card.action_text }}</a>
+							<a href="{{ card.action_link }}" class="btn btn-primary bg-genoa-600">{{ card.action_text }}</a>
 						{% endif %}
 					</div>
 				</div>
