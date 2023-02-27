@@ -13,6 +13,23 @@ gtag('js', new Date());
 gtag('config', 'G-5TWE5SW094');
 		</script>
 
+		<script>
+			(function (w, c) {
+(w[c] = w[c] || []).push(function () {
+new zTracker({
+"id": "cae7eeb44d923b6b2f4649ee62d145b614862",
+"metrics": {
+"ga": "G-5TWE5SW094"
+}
+});
+});
+})(window, "zTrackerCallbacks");
+		</script>
+		<script
+			async
+			id="zd_ct_phone_script"
+			src="https://my.zadarma.com/js/ct_phone.min.js"></script>
+
 		{% block head %}
 			<meta charset="utf-8"/>
 			<title>
@@ -64,7 +81,7 @@ gtag('config', 'G-5TWE5SW094');
 		{% endblock %}
 	</head>
 
-	<body id="top" class="{{ page.header.body_classes | e }} m-5 bg-white shadow-xl rounded p-2 md:p-5 container mx-auto">
+	<body id="top" class="{{ page.header.body_classes | e }} bg-white shadow-xl rounded p-2 md:p-5 container mx-auto">
 		<div x-data="{ atTop: false, menuVisible: false }" class="{{ page.header.menu_position ? 'absolute top-0 left-0 w-full z-10 text-white ' : 'text-gray-600 mb-5' }} border-b" :class="{ 'fixed  top-0 left-0 w-full bg-white z-10 p-2': atTop}" @scroll.window="atTop = (window.pageYOffset < 50) ? false: true">
 			<div class="container mx-auto bg-white bg-opacity-10 rounded">
 				<div class="md:flex items-center gap-5 p-0 justify-between">
@@ -95,9 +112,9 @@ gtag('config', 'G-5TWE5SW094');
 							<i class="ti ti-menu-2 text-xl"></i>
 						</div>
 						<div
-							class="bg-genoa-600 py-1 font-semibold text-2xl text-center rounded flex-1"
+							class="bg-genoa-600 py-1 font-semibold text-2xl text-center rounded flex-1 "
 							:class="{'':atTop}">
-							<a href="tel:{{ site.phone }}" class="mx-auto text-white w-full p-2">
+							<a href="tel:{{ site.phone }}" class="mx-auto text-white w-full p-2 zphone">
 								<i class="ti ti-phone"></i>
 								{{ site.phone }}</a>
 						</div>
@@ -113,7 +130,7 @@ gtag('config', 'G-5TWE5SW094');
 		{% endblock %}
 
 		<div class="bg-genoa-600 py-1 mr-4 font-semibold px-5 text-2xl text-center rounded">
-			<a href="tel:{{ site.phone }}" class="mx-auto text-white">
+			<a href="tel:{{ site.phone }}" class="mx-auto text-white zphone">
 				Zadzwoń
 				<i class="ti ti-phone"></i>
 				{{ site.phone }}</a>
