@@ -13,13 +13,11 @@ gtag('js', new Date());
 gtag('config', 'G-5TWE5SW094');
 		</script>
 
-
 		{% block head %}
 			<meta charset="utf-8"/>
 			<title>
 				{% if header.title %}
-					{{ header.title | e }}
-					|
+					{{ header.title | e }} |
 				{% endif %}
 				{{ site.title | e }}
 			</title>
@@ -28,49 +26,62 @@ gtag('config', 'G-5TWE5SW094');
 			<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 			<link rel="stylesheet" href=""/>
-			<link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="https://fonts.googleapis.com/css2?family=Domine">
-			<link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
-			{% include 'partials/metadata.html.twig' %}
-
-			{% do assets.addLink(config.theme.favicon_file | first.path|e, { rel: 'icon', type: 'image/png' }) %}
+			<link
+				rel="stylesheet"
+				media="print"
+				onload="this.onload=null;this.removeAttribute('media');"
+				href="https://fonts.googleapis.com/css2?family=Domine"/>
+			<link
+				rel="stylesheet"
+				media="print"
+				onload="this.onload=null;this.removeAttribute('media');"
+				href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css"/> {% include 'partials/metadata.html.twig' %}
+			{% do
+    assets.addLink(config.theme.favicon_file | first.path|e, { rel: 'icon',
+    type: 'image/png' }) %}
 			<link rel="canonical" href="{{ page.canonical(true) | e }}"/>
 		{% endblock head %}
-
-
 		{% block stylesheets %}
-			{% do assets.addCss('theme://dist/css/styles' ~ extension ~ '.css', 98) %}
-		{% endblock %}
+			{% do
+    assets.addCss('theme://dist/css/styles' ~ extension ~ '.css', 98) %}
+		{%
+    endblock %}
 		{% block javascripts %}
-			{% do assets.addJs('theme://dist/js/main' ~ extension ~ '.js', 98) %}
-		{% endblock %}
+			{% do
+    assets.addJs('theme://dist/js/main' ~ extension ~ '.js', 98) %}
+		{% endblock
+    %}
 		{% block assets deferred %}
 
 			<script src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js" defer></script>
 
 			{{
-                assets.css() | raw
-            }}
+      assets.css() | raw
+    }}
 			{{
-             assets.js() | raw
-            }}
+      assets.js() | raw
+    }}
 		{% endblock %}
 	</head>
 
 	<body id="top" class="{{ page.header.body_classes | e }} m-5 bg-white shadow-xl rounded p-2 md:p-5 container mx-auto">
-
-		<div x-data="{ atTop: false, menuVisible: false }" class="{{page.header.menu_position ? 'absolute top-0 left-0 w-full z-10 text-white ' : 'text-gray-600 mb-5'}} border-b" :class="{ 'fixed  top-0 left-0 w-full bg-white z-10 p-2': atTop}" @scroll.window="atTop = (window.pageYOffset < 50) ? false: true">
-			<div class="container mx-auto     bg-white bg-opacity-10 rounded">
+		<div x-data="{ atTop: false, menuVisible: false }" class="{{ page.header.menu_position ? 'absolute top-0 left-0 w-full z-10 text-white ' : 'text-gray-600 mb-5' }} border-b" :class="{ 'fixed  top-0 left-0 w-full bg-white z-10 p-2': atTop}" @scroll.window="atTop = (window.pageYOffset < 50) ? false: true">
+			<div class="container mx-auto bg-white bg-opacity-10 rounded">
 				<div class="md:flex items-center gap-5 p-0 justify-between">
-
-					<h1 class="text-center md:text-left md:flex items-center mb-5 md:mb-0 " :class="{'hidden': atTop}">
+					<h1
+						class="text-center md:text-left md:flex items-center mb-5 md:mb-0"
+						:class="{'hidden': atTop}">
 						{% if config.theme.logo | first %}
-							<img src="{{config.theme.logo | first.path|e}}" alt="" class="h-16 mx-auto mb-5 md:mb-0  md:mr-5 " :class="{' h-10':atTop}">
+							<img src="{{config.theme.logo | first.path|e}}" alt="" class="h-16 mx-auto mb-5 md:mb-0 md:mr-5" :class="{' h-10':atTop}"/>
 						{% endif %}
 
-						<a href="{{ home_url|e }}" class="normal-case  " :class="{'text-lg':atTop , 'text-3xl ml-5': !atTop}">{{  config.site.title|e  }}</a>
+						<a href="{{ home_url | e }}" class="normal-case" :class="{'text-lg':atTop , 'text-3xl ml-5': !atTop}">{{ config.site.title | e }}</a>
 					</h1>
 
-					<div class=" md:block" :class="{'hidden md:block': !menuVisible}">
+					<div
+						class="md:block"
+						:class="{'hidden md:block': !menuVisible}"
+						@click.outside="menuVisible = false">
 						{% block header_navigation %}
 							<nav class="main-nav">
 								{% include 'partials/navigation.html.twig' %}
@@ -78,21 +89,22 @@ gtag('config', 'G-5TWE5SW094');
 						{% endblock %}
 					</div>
 					<div class="flex">
-						<div @click.prevent="menuVisible = !menuVisible" class="p-2 cursor-pointer md:hidden">
+						<div
+							@click.prevent="menuVisible = !menuVisible"
+							class="p-2 cursor-pointer md:hidden">
 							<i class="ti ti-menu-2 text-xl"></i>
 						</div>
-						<div class="bg-genoa-600 py-1 font-semibold text-2xl text-center rounded flex-1" :class="{'':atTop}">
-
-							<a href="tel:{{site.phone}}" class="mx-auto text-white w-full p-2">
+						<div
+							class="bg-genoa-600 py-1 font-semibold text-2xl text-center rounded flex-1"
+							:class="{'':atTop}">
+							<a href="tel:{{ site.phone }}" class="mx-auto text-white w-full p-2">
 								<i class="ti ti-phone"></i>
-								{{site.phone}}</a>
+								{{ site.phone }}</a>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
-
 
 		{% block body %}
 			<section class="container mx-auto p-4">
@@ -101,17 +113,16 @@ gtag('config', 'G-5TWE5SW094');
 		{% endblock %}
 
 		<div class="bg-genoa-600 py-1 mr-4 font-semibold px-5 text-2xl text-center rounded">
-			<a href="tel:{{site.phone}}" class="mx-auto text-white">
+			<a href="tel:{{ site.phone }}" class="mx-auto text-white">
 				Zadzwoń
 				<i class="ti ti-phone"></i>
-				{{site.phone}}</a>
+				{{ site.phone }}</a>
 		</div>
 		{% block footer %}
-			{% include
-        '/partials/footer.html.twig' %}
+			{% include '/partials/footer.html.twig' %}
 		{% endblock %}
 		{% block bottom %}
-			{{ assets.js("bottom") | raw }}
+			{{ assets.js('bottom') | raw }}
 		{% endblock %}
 	</body>
 </html>
