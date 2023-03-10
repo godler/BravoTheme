@@ -28,27 +28,7 @@ module.exports = {
       },
     },
 
-    typography: (theme) => ({
-      DEFAULT: {
-        css: {
-          color: 'inherit',
-          lineHeight: 'inherit',
-          maxWidth: 'inherit',
-          a: {
-            transition: 'all 500ms',
-            color: theme('colors.primary.DEFAULT'),
-            '&:hover': {
-              color: theme('colors.primary.darker'),
-            },
-            textDecoration: 'none',
-          },
-          strong: {
-            color: 'inherit',
-          },
-        },
-      },
-    }),
-  },
+
   variants: {
     extend: {},
   },
