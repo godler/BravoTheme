@@ -1,7 +1,7 @@
-title: My Page Blueprint
+title: Modular Bleprint
 '@extends':
-    type: default
-    context: blueprints://pages
+  type: default
+  context: blueprints://pages
 
 form:
   fields:
@@ -12,14 +12,14 @@ form:
         content:
           type: tab
           fields:
-             header.menu_position:
+            header.menu_position:
               type: toggle
               label: Menu position
               highlight: 0
               default: 0
               options:
-                  1: Absolute
-                  0: Relative
+                1: Absolute
+                0: Relative
               validate:
-                  type: bool
-              description: 
+                type: bool
+              description:

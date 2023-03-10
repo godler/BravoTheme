@@ -10,7 +10,8 @@
 
 
 <div class="relative text-justify">
-	<div class="container mx-auto md:px-16 {{ page.header.text_classes }} {{page.header.shadow ? 'shadow-lg' : 'border-b'}} {{style}}">
+	<div class="container mx-auto md:px-16 {{ page.header.text_classes }}
+			{{page.header.shadow ? 'shadow-lg' : 'border-b'}} {{style}}">
 		<div class="md:flex {{page.header.reverse ? 'flex-row-reverse' : ''}}">
 			<div class="p-5 md:p-10 flex flex-col justify-between flex-1 prose ">
 				<h1 class="text-3xl font-semibold mb-5 text-{{page.header.title_align}}">{{page.title}}</h1>
@@ -19,7 +20,7 @@
 						{{page.header.subtitle}}
 					</h2>
 				{% endif %}
-				<div class="text-lg">{{ content|raw }}</div>
+				<div class="text-lg text-left md:text-justify">{{ content|raw }}</div>
 				{% if page.header.action_text %}
 					<a href="{{ page.header.action_link }}" class="btn   border-0 shadow rounded-xl mt-5" style="background: {{page.header.bg_color}}; color: {{page.header.text_color}}">
 						{{page.header.action_text}}
@@ -27,7 +28,8 @@
 				{% endif %}
 			</div>
 			{% if image %}
-				<div class="p-10 md:w-1/2  text-center flex flex-col items-center min-h-full justify-center">
+				<div class="p-10 md:w-1/2 text-center flex flex-col items-center min-h-full
+						justify-center">
 					<img src="{{image.url}}" class=" md:object-cover rounded-xl  md:h-[400px] mx-auto"/>
 				</div>
 			{% endif %}
