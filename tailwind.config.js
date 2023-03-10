@@ -27,8 +27,7 @@ module.exports = {
         },
       },
     },
-
-
+  },
   variants: {
     extend: {},
   },
